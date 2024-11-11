@@ -1,10 +1,17 @@
+import Banner from "@/components/blocks/banner";
+import DetailsBlock from "@/components/blocks/details-block";
+import Projects from "./projects";
+import Testimonials from "@/components/blocks/testimonials";
 
 export default function Home() {
   return (
     <div
-      className={`flex items-center justify-center min-h-screen w-full`}
+      className={` min-h-[90vh] w-full`}
     >
-      Website ra Chits.
+      <Banner />
+      <DetailsBlock />
+      <Projects />
+      <Testimonials />
     </div>
   );
 }
