@@ -2,7 +2,7 @@ import React from 'react'
 
 const ProjectDetails = () => {
     return (
-        <div>
+        <div className='min-h-[80vh] '>
             Project details page
         </div>
     )

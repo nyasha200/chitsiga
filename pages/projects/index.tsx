@@ -3,7 +3,7 @@ import React from 'react'
 
 const Projects = () => {
     return (
-        <div className='min-h-[90vh]'>
+        <div className='min-h-[80vh]'>
             <ProjectsList />
         </div>
     )
