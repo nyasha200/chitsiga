@@ -5,7 +5,9 @@ import React from 'react'
 const ProjectsList = () => {
     return (
         <div>
-            <Text />
+            <Text >
+                Projects title here
+            </Text>
             <ProjectCard />
         </div>
     )
