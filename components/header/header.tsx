@@ -10,7 +10,6 @@ type MenuItem = {
 
 const Header = () => {
     const pathname = usePathname();
-    const isLawyerRoute = pathname.startsWith('/lawyer/') && pathname !== '/lawyer/onboarding';
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -29,23 +28,17 @@ const Header = () => {
 
     const menuItems: MenuItem[] = [
         { name: 'Home', href: `/` },
-        { name: 'Book a Consultation', href: `/booking` },
-        { name: 'About Us', href: `/about` },
+        { name: 'Projects', href: `/projects` },
+        { name: 'Contact Us', href: `/contact` },
 
     ];
-
-    const lawyerMenuItems: MenuItem[] = [
-        { name: 'Home', href: `/lawyer/home` },
-        { name: 'Profile', href: `/lawyer/profile` },
-        { name: 'Reports', href: `/lawyer/reports` },
-    ]
 
     return (
         <>
             <header className=' mb-4 border-b-[2px] border-slate-200 mr-4 h-[60px]'>
                 <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5">
                     <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-                        <Link href={isLawyerRoute ? '/lawyer/home' : '/'} className="flex items-center flex-1">
+                        <Link href='/' className="flex items-center flex-1">
                             <img
                                 src='/assets/logo.png'
                                 alt="Flowbite Logo"
@@ -88,48 +81,24 @@ const Header = () => {
                             id="mobile-menu-2"
                         >
                             <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-4 lg:mt-0 h-screen w-screen md:h-[60px] md:w-full !bg-white sticky top-0 md:relative">
-                                {isLawyerRoute ? (
-                                    <>
-                                        {lawyerMenuItems.map((item) => {
-                                            const isActive = pathname === item.href;
-                                            return (
-                                                <li key={item.name}>
-                                                    <Link
-                                                        href={item.href}
-                                                        className={`relative block py-2 pr-4 md:mr-12 pl-3 border-b-4 border-transparent font-bold max-w-32 mt-4 md:mt-0 text-[14px] md:text-[18px] whitespace-nowrap
+                                {menuItems.map((item) => {
+                                    const isActive = pathname === item.href;
+                                    return (
+                                        <li key={item.name}>
+                                            <Link
+                                                href={item.href}
+                                                className={`relative block py-2 pr-4 md:mr-12 pl-3 border-b-4 border-transparent font-bold mt-4 md:mt-0 text-[14px] md:text-[18px] whitespace-nowrap
                                          ${isActive
-                                                                ? 'text-khakhi border-khakhi'
-                                                                : 'text-blue-1 border-blue-1 border-b-2 md:border-transparent hover:border-b-4 hover:text-blue-2 hover:border-blue-2'
-                                                            } transition-all duration-300 ease-in-out`}
-                                                        onClick={() => setIsMobileMenuOpen(false)}
-                                                    >
-                                                        {item.name}
-                                                    </Link>
-                                                </li>
-                                            );
-                                        })}
-                                    </>
-                                ) : (
-                                    <>
-                                        {menuItems.map((item) => {
-                                            const isActive = pathname === item.href;
-                                            return (
-                                                <li key={item.name}>
-                                                    <Link
-                                                        href={item.href}
-                                                        className={`relative block py-2 pr-4 md:mr-12 pl-3 border-b-4 border-transparent font-bold mt-4 md:mt-0 text-[14px] md:text-[18px] whitespace-nowrap
-                                         ${isActive
-                                                                ? 'text-khakhi border-khakhi'
-                                                                : 'text-blue-1 border-blue-1 border-b-2 md:border-transparent hover:border-b-4 hover:text-blue-2 hover:border-blue-2'
-                                                            } transition-all duration-300 ease-in-out`}
-                                                        onClick={() => setIsMobileMenuOpen(false)}
-                                                    >
-                                                        {item.name}
-                                                    </Link>
-                                                </li>
-                                            );
-                                        })}
-                                    </>)}
+                                                        ? 'text-red-2'
+                                                        : 'text-brown-2 md:border-transparent hover:border-b-4 hover:text-blue-2 hover:border-blue-2'
+                                                    } transition-all duration-300 ease-in-out`}
+                                                onClick={() => setIsMobileMenuOpen(false)}
+                                            >
+                                                {item.name}
+                                            </Link>
+                                        </li>
+                                    );
+                                })}
                             </ul>
                         </div>
                     </div>
