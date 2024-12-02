@@ -29,7 +29,7 @@ const Text = <C extends React.ElementType = 'p'>({
     const textWeight = `font-${weight}`;
 
     const textColor = {
-        'gray': 'text-[#333333]',
+        'gray': 'text-[#a0a0a0]',
         'brown': 'text-[#934f10]',
         'green': 'text-[#399256]',
         'black': 'text-[#313131]',
