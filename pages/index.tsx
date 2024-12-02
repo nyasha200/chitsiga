@@ -3,8 +3,20 @@ import Banner from "@/components/blocks/banner";
 import DetailsBlock from "@/components/blocks/details-block";
 import Projects from "@/components/blocks/projects";
 import Testimonials from "@/components/blocks/testimonials";
+import apolloClient from "@/lib/apolloclient";
+import { GET_HOMEPAGE_DATA } from "@/lib/queries";
+import { CardDetails } from "@/utils/types";
 
-export default function Home() {
+interface Props {
+  testimonies: CardDetails[];
+  bannerItems: any[];
+  completedProjects: any[];
+  underConstructionProjects: any[];
+}
+
+export default function Home({ testimonies }: Props) {
+  console.log(testimonies)
+
   return (
     <>
       <Head>
@@ -57,8 +69,33 @@ export default function Home() {
         <Banner />
         <DetailsBlock />
         <Projects />
-        <Testimonials />
+        <Testimonials testimonies={testimonies} />
       </div>
     </>
   );
 }
+
+export async function getServerSideProps() {
+  try {
+    const { data } = await apolloClient.query({
+      query: GET_HOMEPAGE_DATA
+    });
+
+    return {
+      props: {
+        bannerItems: data?.bannerItemCollection?.items,
+        testimonies: data?.cardCollection?.items,
+        completedProjects: data?.completedProjects?.items,
+        underConstructionProjects: data?.cardCollection?.items
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching page data:', error);
+    return {
+      props: {
+        item: null,
+      },
+    };
+  }
+}
+
