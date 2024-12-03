@@ -10,3 +10,13 @@ export interface CardDetails {
     y?: number;
 
 }
+
+export interface BannerItem {
+    title: string;
+    project: {
+        slug: string;
+        coverImage: {
+            url: string;
+        }
+    }
+}

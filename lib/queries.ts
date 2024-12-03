@@ -20,7 +20,6 @@ export const GET_HOMEPAGE_DATA = gql`
       items {
         title
         project {
-          title
           slug
           coverImage {
             url

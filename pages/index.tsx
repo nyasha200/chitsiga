@@ -5,18 +5,16 @@ import Projects from "@/components/blocks/projects";
 import Testimonials from "@/components/blocks/testimonials";
 import apolloClient from "@/lib/apolloclient";
 import { GET_HOMEPAGE_DATA } from "@/lib/queries";
-import { CardDetails } from "@/utils/types";
+import { BannerItem, CardDetails } from "@/utils/types";
 
 interface Props {
   testimonies: CardDetails[];
-  bannerItems: any[];
+  bannerItems: BannerItem[];
   completedProjects: any[];
   underConstructionProjects: any[];
 }
 
-export default function Home({ testimonies }: Props) {
-  console.log(testimonies)
-
+export default function Home({ testimonies, bannerItems }: Props) {
   return (
     <>
       <Head>
@@ -66,7 +64,7 @@ export default function Home({ testimonies }: Props) {
       </Head>
 
       <div className={`min-h-[80vh] w-full`}>
-        <Banner />
+        <Banner bannerItems={bannerItems} />
         <DetailsBlock />
         <Projects />
         <Testimonials testimonies={testimonies} />

@@ -80,7 +80,7 @@ const Header = () => {
                                 } justify-between items-center w-full lg:flex lg:w-auto lg:order-1 bg-white z-[100]`}
                             id="mobile-menu-2"
                         >
-                            <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-4 lg:mt-0 h-screen w-screen md:h-[60px] md:w-full !bg-white sticky top-0 md:relative">
+                            <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-4 lg:mt-0 h-screen w-screen md:h-[54px] md:w-full !bg-white sticky top-0 md:relative">
                                 {menuItems.map((item) => {
                                     const isActive = pathname === item.href;
                                     return (
@@ -89,7 +89,7 @@ const Header = () => {
                                                 href={item.href}
                                                 className={`relative block py-2 pr-4 md:mr-12 pl-3 border-b-4 border-transparent font-bold mt-4 md:mt-0 text-[14px] md:text-[18px] whitespace-nowrap
                                          ${isActive
-                                                        ? 'text-red-2'
+                                                        ? 'text-red-1'
                                                         : 'text-brown-2 md:border-transparent hover:border-b-4 hover:text-blue-2 hover:border-blue-2'
                                                     } transition-all duration-300 ease-in-out`}
                                                 onClick={() => setIsMobileMenuOpen(false)}
