@@ -20,3 +20,26 @@ export interface BannerItem {
         }
     }
 }
+
+export interface Asset {
+    __typename: string;
+    url: string;
+}
+
+export interface Project {
+    __typename: string;
+    title: string;
+    stage: string;
+    slug: string;
+    location?: string;
+    coverImage: Asset;
+}
+
+export interface HomepageCard {
+    __typename: "HomepageCard";
+    title: string;
+    description: string;
+    buttonText: string;
+    link: string;
+    image: Asset;
+}

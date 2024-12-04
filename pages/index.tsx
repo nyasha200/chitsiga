@@ -5,16 +5,23 @@ import Projects from "@/components/blocks/projects";
 import Testimonials from "@/components/blocks/testimonials";
 import apolloClient from "@/lib/apolloclient";
 import { GET_HOMEPAGE_DATA } from "@/lib/queries";
-import { BannerItem, CardDetails } from "@/utils/types";
+import { BannerItem, CardDetails, Project } from "@/utils/types";
 
 interface Props {
   testimonies: CardDetails[];
   bannerItems: BannerItem[];
-  completedProjects: any[];
-  underConstructionProjects: any[];
+  completedProjects: Project[];
+  underConstructionProjects: Project[];
+  detailsCards: any[]
 }
 
-export default function Home({ testimonies, bannerItems }: Props) {
+export default function Home({
+  testimonies,
+  bannerItems,
+  completedProjects,
+  underConstructionProjects,
+  detailsCards
+}: Props) {
   return (
     <>
       <Head>
@@ -65,8 +72,18 @@ export default function Home({ testimonies, bannerItems }: Props) {
 
       <div className={`min-h-[80vh] w-full`}>
         <Banner bannerItems={bannerItems} />
-        <DetailsBlock />
-        <Projects />
+        <DetailsBlock details={detailsCards[0]} textFirst />
+        <Projects
+          title="Current Projects"
+          description=""
+          projects={underConstructionProjects}
+        />
+        <DetailsBlock details={detailsCards[1]} textFirst={false} />
+        <Projects
+          title="Completed Projects"
+          description=""
+          projects={completedProjects}
+        />
         <Testimonials testimonies={testimonies} />
       </div>
     </>
@@ -84,7 +101,8 @@ export async function getServerSideProps() {
         bannerItems: data?.bannerItemCollection?.items,
         testimonies: data?.cardCollection?.items,
         completedProjects: data?.completedProjects?.items,
-        underConstructionProjects: data?.cardCollection?.items
+        underConstructionProjects: data?.underConstructionProjects?.items,
+        detailsCards: data?.detailCards?.items
       },
     };
   } catch (error) {

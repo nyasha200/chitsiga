@@ -45,6 +45,7 @@ export const GET_HOMEPAGE_DATA = gql`
       items {
         title
         stage
+        location
         slug
         coverImage {
           url
@@ -60,7 +61,19 @@ export const GET_HOMEPAGE_DATA = gql`
         title
         slug
         stage
+        location
         coverImage {
+          url
+        }
+      }
+    }
+    detailCards: homepageCardCollection {
+      items {
+        title
+        description
+        buttonText
+        link
+        image {
           url
         }
       }
