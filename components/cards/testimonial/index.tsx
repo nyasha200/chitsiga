@@ -15,7 +15,7 @@ const TestimonyCard = ({ testimony }: Props) => {
                 alt=''
                 width={100}
                 height={100}
-                className='h-[100px] w-[100px] object-cover rounded-full'
+                className='h-[240px] w-[240px] object-cover rounded-full'
             />
             <Text variant='title5' additional='mt-4'>
                 {testimony.title}
