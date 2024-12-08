@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Head from 'next/head';
 import ProjectsBanner from '@/components/blocks/projects-banner';
 import ProjectsFilter from '@/components/blocks/projects-filter';
 import ProjectsList from '@/components/blocks/projects-list';
@@ -27,14 +28,43 @@ const ProjectsComponent = ({ projects, selectedStage }: Props) => {
     };
 
     return (
-        <Container>
-            <Text variant="title3" color="black" additional="my-4">
-                Projects
-            </Text>
-            <ProjectsFilter selectedStage={currentStage} onFilterChange={handleFilterChange} />
-            <ProjectsBanner projects={bannerProjects} />
-            <ProjectsList projects={listProjects} />
-        </Container>
+        <>
+            <Head>
+                <title>Projects | Studio NT Architecture</title>
+                <meta
+                    name="description"
+                    content="Explore the projects by Studio NT Architecture. View projects in various stages including design, construction, and completed."
+                />
+                <meta
+                    name="keywords"
+                    content="architecture projects, Studio NT, design projects, construction, completed architecture"
+                />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <meta property="og:title" content="Studio NT Architecture | Projects" />
+                <meta
+                    property="og:description"
+                    content="Discover Studio NT Architecture's projects, categorized by design, construction, and completion stages."
+                />
+                <meta property="og:url" content="https://yourwebsite.com/projects" />
+                <meta property="og:image" content="https://yourwebsite.com/images/projects-banner.jpg" />
+                <meta property="og:type" content="website" />
+                <meta name="twitter:title" content="Studio NT Architecture | Projects" />
+                <meta
+                    name="twitter:description"
+                    content="View Studio NT Architecture's projects across various stages of completion."
+                />
+                <meta name="twitter:image" content="https://yourwebsite.com/images/projects-banner.jpg" />
+                <meta name="twitter:card" content="summary_large_image" />
+            </Head>
+            <Container>
+                <Text variant="title3" color="black" additional="my-4">
+                    Projects
+                </Text>
+                <ProjectsFilter selectedStage={currentStage} onFilterChange={handleFilterChange} />
+                <ProjectsBanner projects={bannerProjects} />
+                <ProjectsList projects={listProjects} />
+            </Container>
+        </>
     );
 };
 
