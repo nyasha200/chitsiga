@@ -80,3 +80,19 @@ export const GET_HOMEPAGE_DATA = gql`
     }
   }
 `;
+
+export const GET_PROJECTS = gql`
+  query GetProjects($stage: String) {
+    projectCollection(where: { stage: $stage }) {
+      items {
+        title
+        slug
+        location
+        stage
+        coverImage {
+          url
+        }
+      }
+    }
+  }
+`;
