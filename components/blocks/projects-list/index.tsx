@@ -1,14 +1,15 @@
 import ProjectCard from '@/components/cards/project'
-import Text from '@/components/ui-components/text'
+import { Project } from '@/utils/types'
 import React from 'react'
 
-const ProjectsList = () => {
+interface Props {
+    projects: Project[];
+}
+const ProjectsList = ({ projects }: Props) => {
     return (
-        <div>
-            <Text >
-                Projects title here
-            </Text>
-            <ProjectCard />
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8'>
+            {projects.map((project, index) => <ProjectCard key={index} project={project} />)}
+
         </div>
     )
 }
