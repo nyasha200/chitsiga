@@ -41,7 +41,7 @@ const Header = () => {
                         <Link href='/' className="flex items-center flex-1">
                             <img
                                 src='/assets/logo.png'
-                                alt="Flowbite Logo"
+                                alt="Studio NT"
                                 className="h-[80px]"
                             />
                         </Link>

@@ -43,3 +43,9 @@ export interface HomepageCard {
     link: string;
     image: Asset;
 }
+
+export interface ContactLink {
+    logo: Asset;
+    link: string;
+    text: string;
+}

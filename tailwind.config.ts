@@ -11,6 +11,8 @@ export default {
       colors: {
         black: "#313131",
         "gray-1": "#333333",
+        "gray-2": '#d3d3d3',
+        "gray-3": "#fafafa",
         "brown-1": "#ff8659",
         "brown-2": "#ff8f61",
         "orange": "#ff3118",

@@ -96,3 +96,17 @@ export const GET_PROJECTS = gql`
     }
   }
 `;
+
+export const GET_CONTACT_LINKS = gql`
+  query GetContactLinks {
+    contactLinkCollection {
+      items {
+        text
+        link
+        logo {
+          url
+        }
+      }
+    }
+  }
+`
