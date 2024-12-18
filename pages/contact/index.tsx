@@ -20,6 +20,19 @@ const Contact = ({ contactLinks }: Props) => {
                 <meta name="description" content="Get in touch with Studio NT Architecture for all your architectural service needs. We're here to help you design your dream space." />
                 <meta name="keywords" content="contact, architecture, architectural services, Studio NT, design, consultation" />
                 <meta name="author" content="Studio NT Architecture" />
+
+                {/* Open Graph Meta Tags */}
+                <meta property="og:title" content="Contact Us - Studio NT Architecture" />
+                <meta property="og:description" content="Get in touch with Studio NT Architecture for all your architectural service needs." />
+                <meta property="og:image" content="https://images.ctfassets.net/00mxw1n99c7a/1KfHPuhjSXzirDSRI7Cuzi/9886a1bd5edcf9f48980883325c9370f/logo4n.png" />
+                <meta property="og:url" content="YOUR_PAGE_URL" />
+                <meta property="og:type" content="website" />
+
+                {/* Twitter Card Meta Tags */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Contact Us - Studio NT Architecture" />
+                <meta name="twitter:description" content="Get in touch with Studio NT Architecture for all your architectural service needs." />
+                <meta name="twitter:image" content="https://images.ctfassets.net/00mxw1n99c7a/1KfHPuhjSXzirDSRI7Cuzi/9886a1bd5edcf9f48980883325c9370f/logo4n.png" />
             </Head>
             <Container className='min-h-[70vh] w-full flex flex-col items-center'>
                 <img
