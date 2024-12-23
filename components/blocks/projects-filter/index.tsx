@@ -9,7 +9,7 @@ const ProjectsFilter: React.FC<ProjectsFilterProps> = ({
     selectedStage,
     onFilterChange,
 }) => {
-    const filters = ['ALL', 'design', 'construction', 'completed'];
+    const filters = ['ALL', 'residential', 'public', 'industrial'];
 
     return (
         <div className="flex gap-4 md:gap-12 my-4 justify-start">
