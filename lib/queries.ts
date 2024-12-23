@@ -110,3 +110,42 @@ export const GET_CONTACT_LINKS = gql`
     }
   }
 `
+
+export const GET_PROJECT = gql`
+query GetProject($slug: String!) {
+  projectCollection(where: { slug: $slug }) {
+    items {
+      title
+      location
+      client
+      stage
+      coverImage {
+        url
+      }
+      galleryCollection {
+        items {
+          url
+          description
+          width
+          height
+        }
+      }
+    }
+  }
+}
+`;
+
+export const GET_RELATED_PROJECTS = gql`
+  query GetRelatedProjects($stage: String!, $slug: String!) {
+    projectCollection(where: { stage: $stage, slug_not: $slug }) {
+      items {
+        title
+        location
+        client
+        coverImage {
+          url
+        }
+      }
+    }
+  }
+`;
