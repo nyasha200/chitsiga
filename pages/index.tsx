@@ -45,11 +45,11 @@ export default function Home({
           property="og:description"
           content="Explore Studio NT Architecture, where innovation meets sustainability. We specialize in creating modern, functional, and sustainable architectural designs in South Africa."
         />
-        <meta property="og:url" content="https://www.studiontarchitecture.com" />
+        <meta property="og:url" content="https://www.studiont.co.za" />
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://www.studiontarchitecture.com/images/og-image.jpg" // Replace with your actual OG image URL
+          content="https://images.ctfassets.net/00mxw1n99c7a/1KfHPuhjSXzirDSRI7Cuzi/9886a1bd5edcf9f48980883325c9370f/logo4n.png"
         />
         <meta property="og:image:alt" content="Studio NT Architecture - Innovative Designs" />
 
@@ -62,7 +62,7 @@ export default function Home({
         />
         <meta
           name="twitter:image"
-          content="https://www.studiontarchitecture.com/images/twitter-image.jpg" // Replace with your actual Twitter image URL
+          content="https://images.ctfassets.net/00mxw1n99c7a/1KfHPuhjSXzirDSRI7Cuzi/9886a1bd5edcf9f48980883325c9370f/logo4n.png"
         />
         <meta name="twitter:image:alt" content="Studio NT Architecture - Building a Better Future" />
 
