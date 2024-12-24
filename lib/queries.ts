@@ -137,11 +137,16 @@ query GetProject($slug: String!) {
 
 export const GET_RELATED_PROJECTS = gql`
   query GetRelatedProjects($stage: String!, $slug: String!) {
-    projectCollection(where: { stage: $stage, slug_not: $slug }) {
+    projectCollection(
+      limit: 3
+      where: { stage: $stage, slug_not: $slug }
+      order: sys_publishedAt_DESC
+    ) {
       items {
         title
         location
         client
+        slug
         coverImage {
           url
         }

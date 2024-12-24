@@ -24,6 +24,9 @@ export interface BannerItem {
 export interface Asset {
     __typename: string;
     url: string;
+    description: string;
+    width: number;
+    height: number;
 }
 
 export interface Project {
@@ -31,8 +34,12 @@ export interface Project {
     title: string;
     stage: string;
     slug: string;
+    client: string;
     location?: string;
     coverImage: Asset;
+    galleryCollection: {
+        items: Asset[];
+    };
 }
 
 export interface HomepageCard {
