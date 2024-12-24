@@ -41,14 +41,14 @@ const ProjectDetails: React.FC<Props> = ({ project, relatedProjects }) => {
         <title>{project.title} - {project.location}</title>
         <meta name="description" content={`Explore the details of the ${project?.title} project located in ${project?.location}, completed for ${project?.client}.`} />
         <meta name="keywords" content={keywords} />
-        <meta name="author" content="Your Company Name" />
+        <meta name="author" content="Studio NT Architecture" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         {/* OpenGraph Tags */}
         <meta property="og:title" content={project.title} />
         <meta property="og:description" content={`Explore the ${project.title} project located in ${project.location}.`} />
         <meta property="og:image" content={project.coverImage.url} />
-        <meta property="og:url" content={`https://yourdomain.com/projects/${project.slug}`} />
+        <meta property="og:url" content={`https://studiont.co.za/projects/${project.slug}`} />
         <meta property="og:type" content="website" />
 
         {/* Twitter Card Tags */}
@@ -58,7 +58,7 @@ const ProjectDetails: React.FC<Props> = ({ project, relatedProjects }) => {
         <meta name="twitter:image" content={project.coverImage.url} />
 
         {/* Canonical URL */}
-        <link rel="canonical" href={`https://yourdomain.com/projects/${project.slug}`} />
+        <link rel="canonical" href={`https://studiont.co.za/projects/${project.slug}`} />
       </Head>
 
       <Container className="w-full">
