@@ -154,3 +154,18 @@ export const GET_RELATED_PROJECTS = gql`
     }
   }
 `;
+
+
+export const GET_VIDEOS = gql`
+  query GetVideos {
+    videoCollection(order: sys_publishedAt_DESC) {
+      items {
+        link
+        title
+        thumbnail {
+          url
+        }
+      }
+    }  
+  }
+`

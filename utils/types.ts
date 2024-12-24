@@ -56,3 +56,9 @@ export interface ContactLink {
     link: string;
     text: string;
 }
+
+export interface Video {
+    link: string;
+    title: string;
+    thumbnail: Asset;
+}
