@@ -3,7 +3,6 @@ import dynamic from 'next/dynamic';
 import { Video } from '@/utils/types';
 import Text from '@/components/ui-components/text';
 import Container from '@/components/ui-components/container';
-import Button from '@/components/ui-components/button';
 
 const ReactPlayer = dynamic(() => import('react-player/youtube'), { ssr: false });
 
@@ -28,7 +27,7 @@ const WatchVideoModal = ({ video, onClose }: Props) => {
                             alt=''
                             className='w-[24px] h-[24px]'
                         />
-                        <Text additional='!text-white  hidden lg:block' variant='title5'>
+                        <Text additional='!text-white  hidden:block' variant='title5'>
                             Back
                         </Text>
                     </div>
@@ -56,7 +55,7 @@ const WatchVideoModal = ({ video, onClose }: Props) => {
 
                 <Container className='pt-12 lg:pt-24'>
                     <ReactPlayer
-                        url={video.link}
+                        url={video?.link}
                         controls
                         width="100%"
                         height="60vh"
@@ -67,7 +66,7 @@ const WatchVideoModal = ({ video, onClose }: Props) => {
                         variant="title5"
                         additional="mt-4 text-center !text-gray-800 !font-normal"
                     >
-                        {video.title}
+                        {video?.title}
                     </Text>
                 </Container>
             </div>
