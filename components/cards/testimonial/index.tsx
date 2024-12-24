@@ -22,7 +22,7 @@ const TestimonyCard = ({ testimony }: Props) => {
             </Text>
             <Text
                 variant='body1'
-                additional='mx-4 mt-4 group-hover:underline transition-all duration-300'
+                additional='mx-4 mt-4 group-hover:underline transition-all duration-300 lg:h-[124px]'
             >
                 "{testimony.description}"
             </Text>

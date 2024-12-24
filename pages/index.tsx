@@ -74,13 +74,13 @@ export default function Home({
         <Banner bannerItems={bannerItems} />
         <DetailsBlock details={detailsCards[0]} textFirst />
         <Projects
-          title="Current Projects"
+          title="Residential Projects"
           description=""
           projects={underConstructionProjects}
         />
         <DetailsBlock details={detailsCards[1]} textFirst={false} />
         <Projects
-          title="Completed Projects"
+          title="Public Projects"
           description=""
           projects={completedProjects}
         />

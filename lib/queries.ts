@@ -39,8 +39,8 @@ export const GET_HOMEPAGE_DATA = gql`
     }
     completedProjects: projectCollection(
       order: sys_publishedAt_DESC
-      where: { stage: "completed" }
-      limit: 3
+      where: { stage: "public" }
+      limit: 2
     ) {
       items {
         title
@@ -54,7 +54,7 @@ export const GET_HOMEPAGE_DATA = gql`
     }
     underConstructionProjects: projectCollection(
       order: sys_publishedAt_DESC
-      where: { stage: "construction" }
+      where: { stage: "residential" }
       limit: 2
     ) {
       items {
