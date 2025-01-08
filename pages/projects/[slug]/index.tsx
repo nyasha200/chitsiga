@@ -141,12 +141,11 @@ const ProjectDetails: React.FC<Props> = ({ project, relatedProjects }) => {
                   src={currentBanner?.url}
                   alt={currentBanner?.description}
                   layout="fill"
-                  objectFit="cover"
-                  className="opacity-70"
+                  className="opacity-70 object-contain md:object-cover"
                 />
               </div>
 
-              <Container className="absolute bottom-4 left-3/4 transform -translate-x-1/2 flex gap-4 md:translate-x-0 md:justify-start">
+              <Container className="absolute bottom-4 left-2/3 lg:left-3/4 transform -translate-x-1/2 flex gap-4 md:translate-x-0 md:justify-start">
                 <button
                   onClick={handlePrevious}
                   className="transform -translate-y-1/2 bg-white text-black text-[24px] rounded-full w-10 h-10 flex items-center justify-center hover:opacity-80"
