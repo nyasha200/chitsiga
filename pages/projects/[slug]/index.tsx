@@ -1,4 +1,6 @@
-import React from 'react';
+'use client'
+
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import apolloClient from '@/lib/apolloclient';
 import { GET_PROJECT, GET_RELATED_PROJECTS } from '@/lib/queries';
@@ -8,6 +10,7 @@ import Text from '@/components/ui-components/text';
 import { Asset, Project } from '@/utils/types';
 import ProjectCard from '@/components/cards/project';
 import Image from 'next/image';
+import RichText from '@/components/ui-components/rich-text';
 
 interface Props {
   project: Project;
@@ -15,7 +18,7 @@ interface Props {
 }
 
 const ProjectDetails: React.FC<Props> = ({ project, relatedProjects }) => {
-  const galleryItems = project.galleryCollection.items;
+  const galleryItems = project?.galleryCollection?.items;
 
   const firstAsset: Asset = galleryItems[0];
   const secondAsset: Asset = galleryItems[1];
@@ -33,6 +36,46 @@ const ProjectDetails: React.FC<Props> = ({ project, relatedProjects }) => {
     'design',
     'projects',
   ].join(', ');
+
+  //carousel logic
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isFading, setIsFading] = useState(false);
+
+  const handleNext = () => {
+    setIsFading(true);
+    setTimeout(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % galleryItems.length);
+      setIsFading(false);
+    }, 300);
+  };
+
+  const handlePrevious = () => {
+    setIsFading(true);
+    setTimeout(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex === 0 ? galleryItems.length - 1 : prevIndex - 1
+      );
+      setIsFading(false);
+    }, 300);
+  };
+
+  const handleBarClick = (index: number) => {
+    setIsFading(true);
+    setTimeout(() => {
+      setCurrentIndex(index);
+      setIsFading(false);
+    }, 300);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [currentIndex]);
+
+  const currentBanner = galleryItems[currentIndex];
 
   return (
     <>
@@ -90,26 +133,58 @@ const ProjectDetails: React.FC<Props> = ({ project, relatedProjects }) => {
         <div className="w-full flex flex-col justify-center items-center">
           <Container className="!p-0 flex flex-col items-center justify-center w-full md:w-[80%]">
             {/* First asset */}
-            {firstAsset && (
-              <div className="my-12 md:my-32 flex flex-col w-full items-center">
+            <div className="relative w-full h-[580px] bg-black overflow-hidden mt-12 lg:mt-24">
+              <div
+                className={`relative w-full h-full transition-opacity duration-300 ${isFading ? 'opacity-80' : 'opacity-100'}`}
+              >
                 <Image
-                  src={firstAsset?.url}
-                  alt=""
-                  width={100}
-                  height={100}
+                  src={currentBanner?.url}
+                  alt={currentBanner?.description}
+                  layout="fill"
                   objectFit="cover"
-                  className="h-[380] md:h-[520px] w-full object-cover"
+                  className="opacity-70"
                 />
-                <Text variant="title5" color="black" weight="normal" additional="mt-12 text-center !font-normal lg:w-[67%]">
-                  {firstAsset?.description}
+              </div>
+
+              <Container className="absolute bottom-4 left-3/4 transform -translate-x-1/2 flex gap-4 md:translate-x-0 md:justify-start">
+                <button
+                  onClick={handlePrevious}
+                  className="transform -translate-y-1/2 bg-white text-black text-[24px] rounded-full w-10 h-10 flex items-center justify-center hover:opacity-80"
+                >
+                  <img src="/assets/icons/back.svg" alt="" className="h-6 w-6" />
+                </button>
+                {galleryItems.map((_, index) => (
+                  <div
+                    key={index}
+                    onClick={() => handleBarClick(index)}
+                    className={`w-6 h-[2px] rounded cursor-pointer ${currentIndex === index ? 'bg-brown-1' : 'bg-white'
+                      }`}
+                  ></div>
+                ))}
+                <button
+                  onClick={handleNext}
+                  className="transform -translate-y-1/2 bg-white text-black text-[24px] rounded-full w-10 h-10 flex items-center justify-center hover:opacity-80"
+                >
+                  <img src="/assets/icons/back.svg" alt="" className="h-6 w-6 rotate-180" />
+                </button>
+              </Container>
+            </div>
+            <Container className="">
+              <div className={`text-left transition-opacity duration-300 ${isFading ? 'opacity-0' : 'opacity-100'}`}>
+                <Text variant="title4" additional=" !max-w-[640px]">
+                  {currentBanner.description}
                 </Text>
               </div>
-            )}
+            </Container>
+
+            {project?.projectDetails && <div className='mt-12 lg:mt-24'>
+              <RichText content={project?.projectDetails} />
+            </div>}
 
             {/* Second asset */}
             {secondAsset && (
-              <Container className="my-8 md:my-12 grid grid-cols-1 md:grid-cols-3">
-                <div className="md:col-span-2 h-full flex flex-col justify-center md:my-0 order-2 md:ml-48">
+              <Container className="my-8 md:my-12 grid grid-cols-1 md:grid-cols-2">
+                <div className=" h-full flex flex-col justify-center md:my-0 order-2 md:ml-48">
                   <Text variant="body1" additional="!max-w-[440px] mt-8">
                     {secondAsset?.description}
                   </Text>
@@ -178,7 +253,7 @@ const ProjectDetails: React.FC<Props> = ({ project, relatedProjects }) => {
         </div>
 
         {/* Related projects */}
-        <Text variant="title4" color="black" additional="my-4 mt-12">
+        <Text variant="title4" color="black" additional="my-4">
           Related Projects
         </Text>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
@@ -233,3 +308,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     };
   }
 };
+
+
+
+
+
+

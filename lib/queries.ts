@@ -113,7 +113,7 @@ export const GET_CONTACT_LINKS = gql`
 
 export const GET_PROJECT = gql`
 query GetProject($slug: String!) {
-  projectCollection(where: { slug: $slug }) {
+  projectCollection(limit: 1, where: { slug: $slug }) {
     items {
       title
       location
@@ -121,6 +121,22 @@ query GetProject($slug: String!) {
       stage
       coverImage {
         url
+      }
+      projectDetails {
+        json
+        links {
+          assets {
+            block {
+              sys {
+                id
+              }
+              url
+              title
+              width
+              height
+            }
+          }
+        }
       }
       galleryCollection {
         items {

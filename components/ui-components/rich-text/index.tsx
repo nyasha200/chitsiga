@@ -64,7 +64,7 @@ const customMarkdownOptions = (content: any, linkClassName: string, customLinkEv
                                 alt={asset.title || 'Image'}
                                 width={asset.width || 600}
                                 height={asset.height || 300}
-                                className="w-full object-contain !max-h-[540px] w-auto"
+                                className="object-contain !max-h-[540px] w-auto my-6"
                             />
                         </div>
                     );

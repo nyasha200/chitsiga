@@ -40,6 +40,7 @@ export interface Project {
     galleryCollection: {
         items: Asset[];
     };
+    projectDetails: JSON;
 }
 
 export interface HomepageCard {
